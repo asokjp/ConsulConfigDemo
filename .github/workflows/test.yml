@@ -1,7 +1,6 @@
 name: Test
 
 on: push
-      branches: [ main ] # match specific branch
 
 jobs:
   test:
