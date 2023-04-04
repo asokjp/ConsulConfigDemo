@@ -32,6 +32,6 @@ jobs:
       - name:  Invoke deployment hook
         uses: distributhor/workflow-webhook@v2
         env:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
-          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          webhook_url: "https://httpbin.org/post"
+          webhook_secret: "12345"
           data: '{ "All": ${{ steps.abc.outputs.all }}, "Added" : ${{ steps.abc.outputs.added }}, "Removed" : ${{ steps.abc.outputs.removed }}, "Renamed":${{ steps.abc.outputs.renamed }},"Modified":${{ steps.abc.outputs.modified }}}'
