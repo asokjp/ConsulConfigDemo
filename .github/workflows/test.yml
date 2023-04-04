@@ -1,6 +1,9 @@
 name: Test
 
-on: push
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   test:
@@ -26,3 +29,9 @@ jobs:
           echo "${{ steps.abc.outputs.modified }}"
           echo "Added+Modified:"
           echo "${{ steps.abc.outputs.added_modified }}"
+      - name:  Invoke deployment hook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+          data: '{ "All": ${{ steps.abc.outputs.all }}, "Added" : ${{ steps.abc.outputs.added }}, "Removed" : ${{ steps.abc.outputs.removed }}, "Renamed":${{ steps.abc.outputs.renamed }},"Modified":${{ steps.abc.outputs.modified }}}'
