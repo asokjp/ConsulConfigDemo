@@ -34,4 +34,4 @@ jobs:
         env:
           webhook_url: "https://httpbin.org/post"
           webhook_secret: "12345"
-          data: '{ "All": ${{ steps.abc.outputs.all }}, "Added" : ${{ steps.abc.outputs.added }}, "Removed" : ${{ steps.abc.outputs.removed }}, "Renamed":${{ steps.abc.outputs.renamed }},"Modified":${{ steps.abc.outputs.modified }}}'
+          data: '{ "All": ${{ steps.abc.outputs.all }}'
